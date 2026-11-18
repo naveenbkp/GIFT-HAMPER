@@ -1,0 +1,44 @@
+table {
+  margin-top: 12px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 80px;
+  padding: 6px;
+}
+
+button {
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+button + button {
+  margin-left: 6px;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+[role='alert'] {
+  color: #b00020;
+}
+
+.brand-header { padding: 24px 0 12px; text-align: center; }
+.brand-name { font-family: Georgia, serif; font-size: 2.5rem; font-weight: 600; letter-spacing: 0.04em; color: #6b3f52; }
+.brand-header p { margin: 6px 0; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.8rem; }

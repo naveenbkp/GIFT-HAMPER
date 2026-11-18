@@ -1,0 +1,47 @@
+<header class="brand-header"><div class="brand-name">Hampévia</div><p>Premium Gift Hampers</p></header>
+<h2>Product List</h2>
+
+<button type="button" (click)="addProduct()" [disabled]="newProduct !== null">Add</button>
+<p *ngIf="saveError" role="alert">{{ saveError }}</p>
+<p *ngIf="deleteError" role="alert">{{ deleteError }}</p>
+
+<table border="1">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.quantity }}</td>
+      <td>
+        <button type="button" (click)="deleteProduct(product)"
+          [disabled]="deletingProductIds.has(product.id)"
+          [attr.aria-label]="'Delete ' + product.name">
+          {{ deletingProductIds.has(product.id) ? 'Deleting...' : 'Delete' }}
+        </button>
+      </td>
+    </tr>
+    <tr *ngIf="newProduct as draft">
+      <td>New</td>
+      <td><input aria-label="Product name" [(ngModel)]="draft.name" [disabled]="isSaving" required /></td>
+      <td><input aria-label="Product description" [(ngModel)]="draft.description" [disabled]="isSaving" /></td>
+      <td><input aria-label="Product price" type="number" min="0" step="0.01" [(ngModel)]="draft.price" [disabled]="isSaving" required /></td>
+      <td><input aria-label="Product quantity" type="number" min="0" step="1" [(ngModel)]="draft.quantity" [disabled]="isSaving" required /></td>
+      <td>
+        <button type="button" (click)="saveProduct()" [disabled]="isSaving">{{ isSaving ? 'Saving...' : 'Save' }}</button>
+        <button type="button" (click)="cancelAdd()" [disabled]="isSaving">Cancel</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

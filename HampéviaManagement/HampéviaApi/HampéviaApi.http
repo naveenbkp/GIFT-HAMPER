@@ -1,0 +1,6 @@
+@HampeviaApi_HostAddress = http://localhost:5234
+
+GET {{HampeviaApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
